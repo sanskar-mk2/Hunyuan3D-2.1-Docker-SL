@@ -1,0 +1,35 @@
+{
+  "title": "Hunyuan3D 2.1 (Serverless)",
+  "description": "Tencent Hunyuan3D 2.1 wrapped for RunPod Serverless inference. Generate shape or full textured 3D meshes from a single image.",
+  "type": "serverless",
+  "category": "3d",
+  "iconUrl": "https://avatars.githubusercontent.com/u/1339699?s=200&v=4",
+  "config": {
+    "runsOn": "GPU",
+    "containerDiskInGb": 60,
+    "gpuCount": 1,
+    "gpuIds": "AMPERE_48,ADA_48_PRO,AMPERE_80,ADA_80_PRO",
+    "allowedCudaVersions": ["12.4", "12.5", "12.6", "12.7"],
+    "presets": [
+      {
+        "name": "Shape Only",
+        "defaults": { "MODE": "shape" }
+      },
+      {
+        "name": "Full Pipeline",
+        "defaults": { "MODE": "full" }
+      }
+    ],
+    "env": [
+      {
+        "key": "MODE",
+        "input": {
+          "name": "Pipeline Mode",
+          "type": "string",
+          "description": "Choose 'shape' for mesh only or 'full' for textured mesh",
+          "default": "full"
+        }
+      }
+    ]
+  }
+}
